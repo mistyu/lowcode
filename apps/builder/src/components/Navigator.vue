@@ -101,7 +101,7 @@ const Icon = defineComponent({
     </div>
     <div class="app-setting-wrapper">
       <div class="common-btn">
-        <FriendsCircle size="16" />
+        <FriendsCircle class="navigator-icon" size="16" />
         发布
       </div>
     </div>
@@ -225,5 +225,8 @@ const Icon = defineComponent({
 .debug-btn.debug {
   color: var(--color-primary);
   box-shadow: var(--color-primary) 0 0 0 1px;
+}
+.navigator-icon {
+  display: flex;
 }
 </style>

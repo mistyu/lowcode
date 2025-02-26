@@ -11,16 +11,17 @@ const router = createRouter({
     {
       path: '/app',
       component: App,
+      redirect: '/app/page',
       children: [
-        {
-          path: 'dataSource',
-          name: 'dataSource',
-          component: DataSource
-        },
         {
           path: 'page',
           name: 'page',
           component: Page
+        },
+        {
+          path: 'dataSource',
+          name: 'dataSource',
+          component: DataSource
         },
         {
           path: 'actions',

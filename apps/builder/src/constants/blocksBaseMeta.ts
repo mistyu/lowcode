@@ -8,9 +8,16 @@ import {
   Table,
   TitleLevel
 } from '@icon-park/vue-next'
+import type { Icon } from '@icon-park/vue-next/lib/runtime'
 import { nanoid } from 'nanoid'
 
-import type { BaseBlockInfo, BlockBaseMeta, BlockType } from '@/types/block'
+import type { BlockInfo, BlockType } from '@/types/block'
+
+type BlockBaseMeta = {
+  type: BlockType
+  label: string
+  icon: Icon
+}
 
 export const blocksBaseMetaList: BlockBaseMeta[] = [
   {
@@ -55,7 +62,7 @@ export const blocksBaseMeta = Object.fromEntries(
   blocksBaseMetaList.map((item) => [item.type, item])
 )
 
-export const getBlocksDefaultData = (type: BlockType): BaseBlockInfo => {
+export const getBlocksDefaultData = (type: BlockType): BlockInfo => {
   const id = nanoid()
   switch (type) {
     case 'quote':
@@ -75,10 +82,10 @@ export const getBlocksDefaultData = (type: BlockType): BaseBlockInfo => {
         label: 'Notes',
         props: {
           content: `
-            <p>I’m <em>running</em> Tiptap <s>with</s> Vue.js. 🎉</p>
-            <p><strong>You</strong> can also teach the editor new things. For example to recognize hex colors and add a color</p>
-            <p> swatch on the fly: #FFF, #0D0D0D, #616161, #A975FF, #FB5151, #FD9170, #FFCB6B, #68CEF8, #80cbc4, #9DEF8F </p>
-        `
+          <p>I’m <em>running</em> Tiptap <s>with</s> Vue.js. 🎉</p>
+          <p><strong>You</strong> can also teach the editor new things. For example to recognize hex colors and add a color</p>
+          <p> swatch on the fly: #FFF, #0D0D0D, #616161, #A975FF, #FB5151, #FD9170, #FFCB6B, #68CEF8, #80cbc4, #9DEF8F </p>
+      `
         }
       }
     case 'heroTitle':

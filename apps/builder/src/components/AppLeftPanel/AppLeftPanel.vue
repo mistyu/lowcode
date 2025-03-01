@@ -1,22 +1,7 @@
 <template>
   <div class="app-left-panel-wrapper">
     <div class="app-left-panel-drawer">
-      <div class="app-left-panel-split tiny-scrollbar">
-        <div class="drawer-header">
-          <h3 class="drawer-title">NAVIGATION</h3>
-        </div>
-        <div class="drawer-content">
-          <Navigation />
-        </div>
-      </div>
-      <div class="app-left-panel-split tiny-scrollbar">
-        <div class="drawer-header">
-          <h3 class="drawer-title">MENUS</h3>
-        </div>
-        <div class="drawer-content">
-          <Menus />
-        </div>
-      </div>
+      <Navigations />
       <div class="app-left-panel-split tiny-scrollbar">
         <div class="drawer-header">
           <h3 class="drawer-title">COMPONENTS</h3>
@@ -45,11 +30,11 @@ import { Plus } from '@icon-park/vue-next'
 
 import BlocksDrawer from '@/components/AppLeftPanel/BlocksDrawer.vue'
 import Components from '@/components/AppLeftPanel/Components.vue'
-import Menus from '@/components/AppLeftPanel/Menus.vue'
-import Navigation from '@/components/AppLeftPanel/Navigation.vue'
+import Navigations from '@/components/AppLeftPanel/Navigations.vue'
 import { useDisclosure } from '@/hooks/useDisclosure'
 
 const { isOpen: isComponentDrawerOpened, toggle } = useDisclosure(false)
+
 </script>
 
 <style scoped>
@@ -66,7 +51,7 @@ const { isOpen: isComponentDrawerOpened, toggle } = useDisclosure(false)
   overflow: hidden;
 }
 
-.app-left-panel-split {
+::v-deep .app-left-panel-split {
   height: 50%;
   overflow: auto;
   border-bottom: 1px solid var(--color-gray-200);
@@ -77,7 +62,7 @@ const { isOpen: isComponentDrawerOpened, toggle } = useDisclosure(false)
   width: 100%;
 }
 
-.drawer-header {
+::v-deep .drawer-header {
   display: flex;
   position: sticky;
   justify-content: space-between;
@@ -89,11 +74,11 @@ const { isOpen: isComponentDrawerOpened, toggle } = useDisclosure(false)
   background-color: var(--color-white);
 }
 
-.drawer-content {
+::v-deep .drawer-content {
   padding: 0 10px;
 }
 
-.drawer-component-adder {
+::v-deep .drawer-component-adder {
   border: none;
   display: flex;
   justify-content: center;

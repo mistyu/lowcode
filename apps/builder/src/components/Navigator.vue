@@ -1,3 +1,48 @@
+<template>
+  <div class="app-navigator">
+    <div class="app-info-wrapper">
+      <RouterLink class="icon-button" to="/o">
+        <ApplicationMenu size="16" />
+      </RouterLink>
+      <div class="app-logo">
+        <img src="https://functions.prod.internal.glideapps.com/getEmoji/%E2%98%84%EF%B8%8F" />
+      </div>
+      <h1 class="app-name">Builder</h1>
+    </div>
+    <div class="app-navigator-link-wrapper">
+      <RouterLink
+        v-for="item in linkItems"
+        :key="item.value"
+        class="app-navigator-link-item"
+        :style="checkActive(item.value) && { background: item.bg }"
+        :to="`/app/${item.value}`"
+      >
+        <div
+          :style="{
+            lineHeight: 0.7,
+            color: checkActive(item.value) ? item.color : 'var(--color-gray-700)'
+          }"
+        >
+          <Icon :type="item.value" :active="checkActive(item.value)" />
+        </div>
+        <span class="item-title">
+          {{ item.label }}
+        </span>
+        <div
+          class="item-border"
+          :style="checkActive(item.value) ? { background: item.borderColor } : {}"
+        ></div>
+      </RouterLink>
+    </div>
+    <div class="app-setting-wrapper">
+      <div class="common-btn">
+        <FriendsCircle class="navigator-icon" size="16" />
+        发布
+      </div>
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ApplicationMenu, DataSheet, FriendsCircle, Lightning, Page } from '@icon-park/vue-next'
 import { computed, defineComponent, h } from 'vue'
@@ -62,51 +107,6 @@ const Icon = defineComponent({
   }
 })
 </script>
-
-<template>
-  <div class="app-navigator">
-    <div class="app-info-wrapper">
-      <RouterLink class="icon-button" to="/o">
-        <ApplicationMenu size="16" />
-      </RouterLink>
-      <div class="app-logo">
-        <img src="https://functions.prod.internal.glideapps.com/getEmoji/%E2%98%84%EF%B8%8F" />
-      </div>
-      <h1 class="app-name">Builder</h1>
-    </div>
-    <div class="app-navigator-link-wrapper">
-      <RouterLink
-        v-for="item in linkItems"
-        :key="item.value"
-        class="app-navigator-link-item"
-        :style="checkActive(item.value) && { background: item.bg }"
-        :to="`/app/${item.value}`"
-      >
-        <div
-          :style="{
-            lineHeight: 0.7,
-            color: checkActive(item.value) ? item.color : 'var(--color-gray-700)'
-          }"
-        >
-          <Icon :type="item.value" :active="checkActive(item.value)" />
-        </div>
-        <span class="item-title">
-          {{ item.label }}
-        </span>
-        <div
-          class="item-border"
-          :style="checkActive(item.value) ? { background: item.borderColor } : {}"
-        ></div>
-      </RouterLink>
-    </div>
-    <div class="app-setting-wrapper">
-      <div class="common-btn">
-        <FriendsCircle class="navigator-icon" size="16" />
-        发布
-      </div>
-    </div>
-  </div>
-</template>
 
 <style scoped>
 .app-navigator {

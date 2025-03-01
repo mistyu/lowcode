@@ -17,14 +17,23 @@
   },
   "dependencies": {
     "@icon-park/vue-next": "1.4.2",
+    "d3": "^7.9.0",
+    "echarts": "^5.6.0",
     "nanoid": "5.0.9",
     "pinia": "^3.0.1",
     "smooth-dnd": "^0.12.1",
     "vue": "^3.5.13",
-    "vue-router": "^4.5.0"
+    "vue-echarts": "^7.0.3",
+    "vue-router": "^4.5.0",
+    "zrender": "^5.6.1"
   },
   "devDependencies": {
+    "@tiptap/core": "2.5.1",
+    "@tiptap/pm": "2.5.1",
+    "@tiptap/starter-kit": "2.5.1",
+    "@tiptap/vue-3": "2.5.1",
     "@tsconfig/node22": "^22.0.0",
+    "@types/d3": "^7.4.3",
     "@types/jsdom": "^21.1.7",
     "@types/node": "^22.13.4",
     "@vitejs/plugin-vue": "^5.2.1",

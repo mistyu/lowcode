@@ -17,10 +17,33 @@
           :class="['navigation-item', activatedPageIndex === index && 'active']"
           @click="onNavigation(index)"
         >
-          <span class="navigation-item-name">
-            {{ page.label }}
-          </span>
-          <CloseSmall theme="outline" size="18" @click="onDeleteNavigation(index)"/>
+          <div>
+            <Input v-if="page.isEdit" size="small" focused :value="page.label" @blur="onBlur(index)" />
+            <span v-else="!page.isEdit" class="navigation-item-name" @dblclick="onDbClick(index)">
+              {{ page.label }}
+            </span>
+          </div>
+          <!-- <CloseSmall theme="outline" size="18" @click="onDeleteNavigation(index)"/> -->
+          <Dropdown :trigger="['click']">
+            <a class="ant-dropdown-link" @click.prevent>
+              <More theme="outline" size="24" fill="#333"/>
+            </a>
+            <template #overlay>
+              <Menu>
+                <MenuItem
+                  key="0"
+                  @click="onRenameNavigation(index)">
+                  重命名
+                </MenuItem>
+                <MenuDivider />
+                <MenuItem key="1">
+                  <a href="http://www.taobao.com/">2nd menu item</a>
+                </MenuItem>
+                <MenuDivider />
+                <MenuItem key="3" @click="onDeleteNavigation(index)">删除</MenuItem>
+              </Menu>
+            </template>
+          </Dropdown>
         </li>
       </ul>
     </div>
@@ -29,37 +52,58 @@
 </template>
 
 <script setup lang="ts">
-import { CloseSmall, Plus } from '@icon-park/vue-next'
+import { More, Plus } from '@icon-park/vue-next'
+import { Dropdown, Input, Menu, MenuDivider,MenuItem } from 'ant-design-vue'
 import { ref } from 'vue'
 
 const pages = ref<{
     type: string;
     label: string;
     value: string;
+    isEdit: boolean;
 }[]>([
   {
     type: 'page',
     label: '页面1',
-    value: 'page1'
+    value: 'page1',
+    isEdit: true
   }
 ])
+const addNavigation = () => {
+  pages.value = pages.value.map((page) => {
+    return {
+      ...page,
+      isEdit: false,
+    }
+  })
+  pages.value.push({
+    type: 'page',
+    label: `页面${pages.value.length + 1}`,
+    value: `page${pages.value.length + 1}`,
+    isEdit: true
+  })
+}
 const onDeleteNavigation = (index: number) => {
   pages.value.splice(index, 1)
   onNavigation(0)
 }
+const onRenameNavigation = (index: number) => {
+  pages.value[index].isEdit = true
+}
+const onBlur = (index: number) => {
+  pages.value[index].isEdit = false
+}
+const onDbClick = (index: number) => {
+  pages.value[index].isEdit = true
+}
+
 
 const activatedPageIndex = ref(0)
 const onNavigation = (index: number) => {
   activatedPageIndex.value = index
 }
 
-const addNavigation = () => {
-  pages.value.push({
-    type: 'page',
-    label: `页面${pages.value.length + 1}`,
-    value: `page${pages.value.length + 1}`
-  })
-}
+
 </script>
 
 <style scoped>
@@ -102,5 +146,8 @@ const addNavigation = () => {
   margin-left: 8px;
   font-size: var(--font-size-small);
   color: var(--color-gray-700);
+}
+.ant-dropdown-link {
+  display: flex;
 }
 </style>

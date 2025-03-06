@@ -1,6 +1,5 @@
 import {
   ChartLine,
-  Form,
   HamburgerButton,
   ImageFiles,
   Notes,
@@ -50,11 +49,6 @@ export const blocksBaseMetaList: BlockBaseMeta[] = [
     type: 'button',
     label: 'Button',
     icon: HamburgerButton
-  },
-  {
-    type: 'form',
-    label: 'Form',
-    icon: Form
   }
 ]
 
@@ -138,15 +132,6 @@ export const getBlocksDefaultData = (type: BlockType): BlockInfo => {
         label: 'Button',
         props: {
           content: 'Button'
-        }
-      }
-    case 'form':
-      return {
-        id,
-        type: 'form',
-        label: 'Form',
-        props: {
-          fields: []
         }
       }
   }

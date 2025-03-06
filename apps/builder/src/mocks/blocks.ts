@@ -68,13 +68,5 @@ export const blocks: BlockInfo[] = [
     props: {
       content: 'Button'
     }
-  },
-  {
-    id: '8',
-    type: 'form',
-    label: 'Form',
-    props: {
-      fields: []
-    }
   }
 ]

@@ -18,7 +18,7 @@
           @click="onNavigation(index)"
         >
           <div>
-            <Input v-if="page.isEdit" size="small" focused :value="page.label" @blur="onBlur(index)" />
+            <Input v-if="page.isEdit" size="small" :value="page.label" @blur="onBlur(index)" />
             <span v-else="!page.isEdit" class="navigation-item-name" @dblclick="onDbClick(index)">
               {{ page.label }}
             </span>
@@ -36,11 +36,7 @@
                   重命名
                 </MenuItem>
                 <MenuDivider />
-                <MenuItem key="1">
-                  <a href="http://www.taobao.com/">2nd menu item</a>
-                </MenuItem>
-                <MenuDivider />
-                <MenuItem key="3" @click="onDeleteNavigation(index)">删除</MenuItem>
+                <MenuItem key="1" @click="onDeleteNavigation(index)">删除</MenuItem>
               </Menu>
             </template>
           </Dropdown>
@@ -66,7 +62,7 @@ const pages = ref<{
     type: 'page',
     label: '页面1',
     value: 'page1',
-    isEdit: true
+    isEdit: false,
   }
 ])
 const addNavigation = () => {
@@ -80,7 +76,7 @@ const addNavigation = () => {
     type: 'page',
     label: `页面${pages.value.length + 1}`,
     value: `page${pages.value.length + 1}`,
-    isEdit: true
+    isEdit: false,
   })
 }
 const onDeleteNavigation = (index: number) => {
@@ -149,5 +145,8 @@ const onNavigation = (index: number) => {
 }
 .ant-dropdown-link {
   display: flex;
+}
+.drawer-title {
+  margin-bottom: 0;
 }
 </style>

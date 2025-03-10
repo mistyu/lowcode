@@ -1,5 +1,5 @@
-export type BasicBlockType = 'heroTitle' | 'view' | 'chart' | 'quote' | 'image'
-export type ExternalBlockType = 'button' | 'notes'
+export type BasicBlockType = 'view' | 'image'
+export type ExternalBlockType = 'button'
 
 export type BlockType = BasicBlockType | ExternalBlockType
 
@@ -11,15 +11,6 @@ export interface BaseBlockInfo {
 // basic
 
 export type HeroTitleBlockAlign = 'left' | 'center' | 'right'
-
-export interface HeroTitleBlockInfo extends BaseBlockInfo {
-  type: 'heroTitle'
-  props: {
-    align: HeroTitleBlockAlign
-    content: string
-    description?: string[]
-  }
-}
 
 export interface ViewBlockInfo extends BaseBlockInfo {
   type: 'view'
@@ -40,14 +31,6 @@ export interface ViewBlockInfo extends BaseBlockInfo {
 
 export const QuoteBlockStatus = ['success', 'warning', 'error'] as const
 export type QuoteBlockStatusType = (typeof QuoteBlockStatus)[number]
-
-export interface QuoteBlockInfo extends BaseBlockInfo {
-  type: 'quote'
-  props: {
-    content: string
-    status: QuoteBlockStatusType
-  }
-}
 
 export interface ImageBlockInfo extends BaseBlockInfo {
   type: 'image'
@@ -71,22 +54,9 @@ export interface NotesBlockInfo extends BaseBlockInfo {
   }
 }
 
-export type ChartType = 'echarts' | 'canvas' | 'svg'
-
-export interface ChartBlockInfo extends BaseBlockInfo {
-  type: 'chart'
-  props: {
-    chartType: ChartType
-  }
-}
-
 export type BlockInfo =
   // basic
-  | HeroTitleBlockInfo
   | ViewBlockInfo
-  | QuoteBlockInfo
   | ImageBlockInfo
-  | ChartBlockInfo
   // external
   | ButtonBlockInfo
-  | NotesBlockInfo

@@ -133,4 +133,7 @@ const { isOpen: isComponentDrawerOpened, toggle } = useDisclosure(false)
   background-color: rgb(250, 250, 251);
   box-shadow: rgba(128, 128, 128, 0.12) 1px 0px 0px;
 }
+.drawer-title {
+  margin-bottom: 0;
+}
 </style>

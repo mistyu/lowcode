@@ -16,7 +16,7 @@
       <smooth-dnd-draggable v-for="d in blocksBaseMetaList" :key="d.type">
         <div class="blocks-item">
           <div class="block-icon-wrapper">
-            <component :is="d.icon" />
+            <component :is="d.icon" /> 
           </div>
           <span class="block-label">{{ d.label }}</span>
         </div>

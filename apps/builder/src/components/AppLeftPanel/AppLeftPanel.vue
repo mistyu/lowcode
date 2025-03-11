@@ -6,14 +6,14 @@
         <div class="drawer-header">
           <h3 class="drawer-title">COMPONENTS</h3>
           <button
-            :class="['drawer-component-adder', isComponentDrawerOpened && 'opened']"
-            @click="toggle"
+            :class="['drawer-component-adder', isAddExternalComponents && 'opened']"
+            @click="onAddExternalComponents"
           >
             <Plus size="18" />
           </button>
         </div>
         <div class="drawer-content">
-          <Components />
+          <Components :toggle="toggle" />
         </div>
       </div>
     </div>
@@ -27,6 +27,7 @@
 
 <script setup lang="ts">
 import { Plus } from '@icon-park/vue-next'
+import { ref } from 'vue'
 
 import BlocksDrawer from '@/components/AppLeftPanel/BlocksDrawer.vue'
 import Components from '@/components/AppLeftPanel/Components.vue'
@@ -34,6 +35,14 @@ import Navigations from '@/components/AppLeftPanel/Navigations.vue'
 import { useDisclosure } from '@/hooks/useDisclosure'
 
 const { isOpen: isComponentDrawerOpened, toggle } = useDisclosure(false)
+
+const isAddExternalComponents = ref(false)
+
+const onAddExternalComponents = () => {
+  // eslint-disable-next-line no-console
+  console.log('onAddExternalComponents')
+  isAddExternalComponents.value = !isAddExternalComponents.value
+}
 
 </script>
 
@@ -115,7 +124,6 @@ const { isOpen: isComponentDrawerOpened, toggle } = useDisclosure(false)
   overflow: hidden;
 }
 
-/* 下面我们会解释这些 class 是做什么的 */
 .sub-panel-drawer-enter-active,
 .sub-panel-drawer-leave-active {
   transition: width 0.1s cubic-bezier(0.3, 0.1, 0.3, 1);

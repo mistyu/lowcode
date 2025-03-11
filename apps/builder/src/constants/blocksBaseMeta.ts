@@ -1,4 +1,4 @@
-import { HamburgerButton, ImageFiles, Table } from '@icon-park/vue-next'
+import { AlignTextRightOne,AllApplication, Column, HamburgerButton, ImageFiles, Page, Table } from '@icon-park/vue-next'
 import type { Icon } from '@icon-park/vue-next/lib/runtime'
 import { nanoid } from 'nanoid'
 
@@ -66,3 +66,31 @@ export const getBlocksDefaultData = (type: BlockType): BlockInfo => {
       }
   }
 }
+
+type ComponentsTypesMeta = {
+  type: 'layout' | 'basic'
+  label: string
+  icon: Icon
+}
+
+export const componentsTypes: ComponentsTypesMeta[] = [
+  { type: 'layout', label: '布局', icon: Page },
+  { type: 'basic', label: '基础', icon: AllApplication }
+]
+
+export const componentsTypesMeta = Object.fromEntries(
+  componentsTypes.map((item) => [item.type, item])
+)
+
+export const blocksLayoutMetaList: {
+  type: string
+  label: string
+  icon: Icon
+}[] = [
+  { type: 'column', label: '列', icon: Column },
+  {
+    type: 'Stack',
+    label: '定位',
+    icon: AlignTextRightOne
+  }
+]

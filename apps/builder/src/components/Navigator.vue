@@ -7,7 +7,7 @@
       <div class="app-logo">
         <img src="https://functions.prod.internal.glideapps.com/getEmoji/%E2%98%84%EF%B8%8F" />
       </div>
-      <h1 class="app-name">Builder</h1>
+      <h1 class="app-name">Engine</h1>
     </div>
     <div class="app-navigator-link-wrapper">
       <RouterLink

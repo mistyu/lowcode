@@ -1,7 +1,7 @@
 <template>
     <div class="content" style="--container-bg-color: #3d6583">
         <div class="navigator-wrapper">
-            <div class="navigator">Builder</div>
+            <div class="navigator">Engine</div>
         </div>
 
         <div class="render-content">

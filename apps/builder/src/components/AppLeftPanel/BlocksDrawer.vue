@@ -1,19 +1,19 @@
 <template>
   <div class="component-sub-drawer">
     <smooth-dnd-container
-      behavior="copy"
+      behaviour="copy"
       group-name="blocks"
       orientation="vertical"
       :get-child-payload="
         (index: number) => {
-          const { type } = blocksBaseMetaList[index]
+          const { type } = layoutBlocksBaseMetaList[index]
           return getBlocksDefaultData(type)
         }
       "
       tag="div"
-      class="blocks-list"
+      class="blocks-list aaa"
     >
-      <smooth-dnd-draggable v-for="d in blocksBaseMetaList" :key="d.type">
+      <smooth-dnd-draggable v-for="d in layoutBlocksBaseMetaList" :key="d.type">
         <div class="blocks-item">
           <div class="block-icon-wrapper">
             <component :is="d.icon" /> 
@@ -28,7 +28,8 @@
 <script setup lang="ts">
 import { SmoothDndContainer } from '@/components/SmoothDnd/SmoothDndContainer'
 import { SmoothDndDraggable } from '@/components/SmoothDnd/SmoothDndDraggable'
-import { blocksBaseMetaList, getBlocksDefaultData } from '@/constants/blocksBaseMeta'
+import { getBlocksDefaultData, layoutBlocksBaseMetaList } from '@/constants/blocksBaseMeta'
+console.log('layoutBlocksBaseMetaList', layoutBlocksBaseMetaList)
 </script>
 
 <style scoped>

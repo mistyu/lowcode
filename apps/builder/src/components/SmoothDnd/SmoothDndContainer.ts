@@ -25,7 +25,7 @@ export const SmoothDndContainer = defineComponent({
     removeOnDropOut: { type: Boolean, default: false },
     autoScrollEnabled: { type: Boolean, default: true },
     animationDuration: { type: Number, default: 250 },
-    behavior: String,
+    behaviour: String,
     groupName: String,
     dragHandleSelector: String,
     nonDragAreaSelector: String,
@@ -72,6 +72,7 @@ export const SmoothDndContainer = defineComponent({
   },
   render() {
     const tagProps = getTagProps(this)
+    console.log('tagProps', tagProps.props)
     return h(
       tagProps.value,
       Object.assign({}, { ref: 'container' }, tagProps.props),

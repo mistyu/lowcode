@@ -1,9 +1,10 @@
 import type { App } from 'vue'
 
+import ButtonBlock from '@/blocks/basic/ButtonBlock.vue'
 import ImageBlock from '@/blocks/basic/ImageBlock.vue'
 import ViewBlock from '@/blocks/basic/ViewBlock.vue'
-import ButtonBlock from '@/blocks/external/ButtonBlock.vue'
 import type { BlockType } from '@/types/block'
+import ColumnsBlock from '@/ui/Layout/Columns.vue'
 
 const baseBlocks = [
   {
@@ -39,6 +40,10 @@ const blockSuite = new BlockSuite()
 blockSuite.addBlock({
   type: 'button',
   material: ButtonBlock
+})
+blockSuite.addBlock({
+  type: 'columns',
+  material: ColumnsBlock
 })
 
 const blocksMap = blockSuite.getBlocksMap()

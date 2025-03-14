@@ -23,7 +23,6 @@ export default [
       ...pluginVue.configs['vue3-recommended'].rules,
       // semi: 'error',
       'prefer-const': 'error',
-      'no-console': 'error',
       'vue/valid-define-emits': 'error',
       'simple-import-sort/imports': 'error',
       'simple-import-sort/exports': 'error',

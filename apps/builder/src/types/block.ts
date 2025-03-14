@@ -1,7 +1,7 @@
 export type BasicBlockType = 'view' | 'image'
 export type ExternalBlockType = 'button'
 
-export type BlockType = BasicBlockType | ExternalBlockType
+export type BlockType = BasicBlockType | ExternalBlockType | 'columns'
 
 export interface BaseBlockInfo {
   id: string
@@ -47,10 +47,11 @@ export interface ButtonBlockInfo extends BaseBlockInfo {
   }
 }
 
-export interface NotesBlockInfo extends BaseBlockInfo {
-  type: 'notes'
+// layout columns
+export interface ColumnsBlockInfo extends BaseBlockInfo {
+  type: 'columns'
   props: {
-    content: string
+    clos: number
   }
 }
 
@@ -60,3 +61,4 @@ export type BlockInfo =
   | ImageBlockInfo
   // external
   | ButtonBlockInfo
+  | ColumnsBlockInfo

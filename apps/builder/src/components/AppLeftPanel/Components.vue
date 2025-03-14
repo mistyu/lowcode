@@ -1,6 +1,6 @@
 <template>
   <ul class="outline-list">
-    <li v-for="component in componentsTypes" :key="component.type" class="outline-item" @click="toggle(component.type)">
+    <li v-for="component in componentsTypes" :key="component.type" :class="['outline-item', activeType === component.type && 'active']" @click="onToggle(component.type)">
       <component :is="componentsTypesMeta[component.type].icon" class="outline-item-icon" />
       <span class="outline-item-name">
         {{ componentsTypesMeta[component.type]?.label }}
@@ -13,13 +13,24 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue';
+
 import { componentsTypes, componentsTypesMeta } from '@/constants/blocksBaseMeta'
 
 import type { ComponentsProps } from './types';
 
+const activeType = ref<string>('')
+const {toggle} = defineProps<ComponentsProps>()
 
+const onToggle = (type: string) => {
+  toggle(type)
+  if (activeType.value === type) {
+    activeType.value = ''
+    return
+  }
+  activeType.value = type;
+}
 
-defineProps<ComponentsProps>()
 </script>
 
 <style scoped>
@@ -36,6 +47,9 @@ defineProps<ComponentsProps>()
   &:hover {
     background-color: var(--color-gray-100);
     transition: all 0.3s ease;
+  }
+  &.active {
+    background-color: var(--color-gray-100);
   }
 }
 
@@ -61,4 +75,5 @@ defineProps<ComponentsProps>()
   box-shadow: var(--color-gray-300) 1px 0 0;
   overflow: hidden;
 }
+
 </style>

@@ -1,4 +1,13 @@
-import { AlignTextRightOne,AllApplication, Column, HamburgerButton, ImageFiles, Page, Table } from '@icon-park/vue-next'
+import {
+  AlignTextRightOne,
+  AllApplication,
+  Column,
+  HamburgerButton,
+  HorizontalTidyUp,
+  ImageFiles,
+  Page,
+  Table
+} from '@icon-park/vue-next'
 import type { Icon } from '@icon-park/vue-next/lib/runtime'
 import { nanoid } from 'nanoid'
 
@@ -28,7 +37,7 @@ export const blocksBaseMeta = Object.fromEntries(
   blocksBaseMetaList.map((item) => [item.type, item])
 )
 
-export const getBlocksDefaultData = (type: BlockType): BlockInfo => {
+export const getBlocksDefaultData = (type: BlockType | 'columns'): BlockInfo => {
   const id = nanoid()
   switch (type) {
     case 'image':
@@ -64,6 +73,15 @@ export const getBlocksDefaultData = (type: BlockType): BlockInfo => {
           content: 'Button'
         }
       }
+    case 'columns':
+      return {
+        id,
+        type: 'columns',
+        label: 'Button',
+        props: {
+          clos: 2
+        }
+      }
   }
 }
 
@@ -93,4 +111,20 @@ export const blocksLayoutMetaList: {
     label: '定位',
     icon: AlignTextRightOne
   }
+]
+
+export const layoutBlocksBaseMetaList: BlockBaseMeta[] = [
+  { type: 'image', label: 'Image', icon: ImageFiles },
+  {
+    type: 'view',
+    label: 'View',
+    icon: Table
+  },
+  {
+    type: 'button',
+    label: 'Button',
+    icon: HamburgerButton
+  },
+  { type: 'columns', label: '多列布局', icon: HorizontalTidyUp }
+  // { type: 'stack', label: '定位布局', icon: HorizontalTidyUp },
 ]

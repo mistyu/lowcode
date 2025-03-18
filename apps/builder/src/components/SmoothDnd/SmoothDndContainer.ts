@@ -72,7 +72,6 @@ export const SmoothDndContainer = defineComponent({
   },
   render() {
     const tagProps = getTagProps(this)
-    console.log('tagProps', tagProps.props)
     return h(
       tagProps.value,
       Object.assign({}, { ref: 'container' }, tagProps.props),

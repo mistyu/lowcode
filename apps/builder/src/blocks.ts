@@ -5,6 +5,7 @@ import ImageBlock from '@/blocks/basic/ImageBlock.vue'
 import ViewBlock from '@/blocks/basic/ViewBlock.vue'
 import type { BlockType } from '@/types/block'
 import ColumnsBlock from '@/ui/Layout/Columns.vue'
+import StackBlock from '@/ui/Layout/Stack.vue'
 
 const baseBlocks = [
   {
@@ -44,6 +45,10 @@ blockSuite.addBlock({
 blockSuite.addBlock({
   type: 'columns',
   material: ColumnsBlock
+})
+blockSuite.addBlock({
+  type: 'stack',
+  material: StackBlock
 })
 
 const blocksMap = blockSuite.getBlocksMap()

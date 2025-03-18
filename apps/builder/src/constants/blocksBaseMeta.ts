@@ -37,7 +37,7 @@ export const blocksBaseMeta = Object.fromEntries(
   blocksBaseMetaList.map((item) => [item.type, item])
 )
 
-export const getBlocksDefaultData = (type: BlockType | 'columns'): BlockInfo => {
+export const getBlocksDefaultData = (type: BlockType | 'columns' | 'stack'): BlockInfo => {
   const id = nanoid()
   switch (type) {
     case 'image':
@@ -77,10 +77,17 @@ export const getBlocksDefaultData = (type: BlockType | 'columns'): BlockInfo => 
       return {
         id,
         type: 'columns',
-        label: 'Button',
+        label: 'Columns',
         props: {
           clos: 2
         }
+      }
+    case 'stack':
+      return {
+        id,
+        type: 'stack',
+        label: 'stack',
+        props: {}
       }
   }
 }
@@ -125,6 +132,6 @@ export const layoutBlocksBaseMetaList: BlockBaseMeta[] = [
     label: 'Button',
     icon: HamburgerButton
   },
-  { type: 'columns', label: '多列布局', icon: HorizontalTidyUp }
-  // { type: 'stack', label: '定位布局', icon: HorizontalTidyUp },
+  { type: 'columns', label: '多列布局', icon: HorizontalTidyUp },
+  { type: 'stack', label: '定位布局', icon: HorizontalTidyUp }
 ]

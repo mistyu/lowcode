@@ -11,7 +11,7 @@
         }
       "
       tag="div"
-      class="blocks-list aaa"
+      class="blocks-list"
     >
       <smooth-dnd-draggable v-for="d in layoutBlocksBaseMetaList" :key="d.type">
         <div class="blocks-item">
@@ -29,7 +29,6 @@
 import { SmoothDndContainer } from '@/components/SmoothDnd/SmoothDndContainer'
 import { SmoothDndDraggable } from '@/components/SmoothDnd/SmoothDndDraggable'
 import { getBlocksDefaultData, layoutBlocksBaseMetaList } from '@/constants/blocksBaseMeta'
-console.log('layoutBlocksBaseMetaList', layoutBlocksBaseMetaList)
 </script>
 
 <style scoped>
